@@ -5,16 +5,19 @@
   "main": "app.js",
   "scripts": {
     "start": "node app",
-    "start:dev": "nodemon app"
+    "start:dev": "nodemon app",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.27.2",
     "cors": "^2.8.5",
     "express": "^4.17.1"
   },
   "devDependencies": {
+    "jest": "^28.1.3",
     "nodemon": "^2.0.19"
   }
 }
