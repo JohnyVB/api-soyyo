@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node app",
     "start:dev": "nodemon app",
-    "test": "jest"
+    "test": "jest",
+    "dockerizing": "docker build -t co.com.soyyo.entity.filter-dev-1_0_0"
   },
   "keywords": [],
   "author": "",
