@@ -1,21 +1,15 @@
 const express = require('express');
 const cors = require('cors');
-const fileUpload = require('express-fileupload');
-
-const { dbConnection } = require('../database/config');
 
 class Server {
 
     constructor() {
         this.app = express();
-        this.port = process.env.PORT;
+        this.port = 3001;
 
         this.path = {
-            auth: '/api/auth',
+            handler: '/api/handler',
         }
-
-        // Conectar a base de datos
-        this.connectDB();
 
         // Middlewares
         this.middlewares();
@@ -23,11 +17,6 @@ class Server {
         // Rutas de mi aplicación
         this.routes();
     }
-
-    async connectDB() {
-        await dbConnection();
-    }
-
 
     middlewares() {
 
@@ -40,17 +29,11 @@ class Server {
         // Directorio Público
         this.app.use(express.static('public'));
 
-        //Carga de archivos
-        this.app.use(fileUpload({
-            useTempFiles: true,
-            tempFileDir: '/tmp/',
-            createParentPath: true
-        }));
     }
 
     routes() {
 
-        this.app.use(this.path.auth, require('../routes/auth'));
+        this.app.use(this.path.handler, require('../routes/handler.routes'));
     }
 
     listen() {
